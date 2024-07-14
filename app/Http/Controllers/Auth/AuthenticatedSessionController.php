@@ -16,9 +16,9 @@ class AuthenticatedSessionController extends Controller
     public function checkLogin() : RedirectResponse {
         if (Auth::check()) {
             return redirect(RouteServiceProvider::HOME);
-        } else {
-            return redirect('login');
         }
+
+        return redirect('login');
     }
 
     /**
@@ -38,7 +38,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'Login Successful.');
     }
 
     /**

@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/compiled/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/compiled/css/auth.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/toastify-js/src/toastify.css') }}">
 </head>
 
 <body>
@@ -62,5 +63,13 @@
 </body>
 
 <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
+<script src="{{ asset('assets/helpers/helpers.js') }}"></script>
+<script src="{{ asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
+
+<script>
+    @error('error')
+        toast('{{ $message }}', 'error')
+    @enderror
+</script>
 
 </html>
