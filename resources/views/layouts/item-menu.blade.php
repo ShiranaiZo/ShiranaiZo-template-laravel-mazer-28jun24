@@ -12,12 +12,3 @@
     </a>
 </li>
 
-<hr>
-
-<li class="sidebar-item">
-    <a href="#" class='sidebar-link' data-bs-toggle="modal" data-bs-target="#modal_logout" >
-        <i class="bi bi-box-arrow-left"></i>
-        <span>Logout</span>
-    </a>
-</li>
-

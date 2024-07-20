@@ -1,4 +1,4 @@
-<div class="sidebar-wrapper active">
+<div class="sidebar-wrapper active d-flex flex-column">
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
@@ -32,14 +32,27 @@
                     </path>
                 </svg>
             </div>
-            <div class="sidebar-toggler  x">
+            <div class="sidebar-toggler x">
                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
             </div>
         </div>
     </div>
-    <div class="sidebar-menu">
-        <ul class="menu">
+
+    <div class="sidebar-menu flex-grow-1 overflow-auto">
+        <ul class="menu mb-0">
             @include('layouts.item-menu')
+        </ul>
+    </div>
+
+    <div class="sidebar-menu mt-auto">
+        <ul class="menu mt-0">
+            <hr class="m-0">
+            <li class="sidebar-item">
+                <a href="#" class='sidebar-link' data-bs-toggle="modal" data-bs-target="#modal_logout">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
