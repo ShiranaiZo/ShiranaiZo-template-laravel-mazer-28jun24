@@ -44,6 +44,9 @@
             </footer>
         </div>
     </div>
+
+    @include('layouts.modal.modal-logout')
+
     <script src="{{asset('assets/static/js/initTheme.js')}}"></script>
     <script src="{{asset('assets/static/js/components/dark.js')}}"></script>
     <script src="{{asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
