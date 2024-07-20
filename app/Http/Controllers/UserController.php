@@ -63,28 +63,40 @@ class UserController extends Controller
 
         $data["elements"] = [
             "name" => [
+                "type" => "text",
                 "id" => "name",
                 "name" => "name",
-                "type" => "text",
                 "label" => "Name",
                 "placeholder" => "Name",
                 "required" => "required",
             ],
             "email" => [
+                "type" => "email",
                 "id" => "email",
                 "name" => "email",
-                "type" => "email",
                 "label" => "Email",
                 "placeholder" => "Email",
                 "required" => "required",
             ],
             "password"=> [
+                "type" => "password",
                 "id" => "password",
                 "name" => "password",
-                "type" => "password",
                 "label" => "Password",
                 "placeholder" => "Password",
                 "required" => "required",
+            ],
+            "show_password"=> [
+                "type" => "checkbox",
+                "id" => "show_password",
+                "name" => "show_password[]",
+                "required" => "",
+                "content" => [
+                    "show_password"=> [
+                        "id" => "show_password",
+                        "label" => "Show Password",
+                    ],
+                ]
             ],
         ];
 
@@ -146,30 +158,42 @@ class UserController extends Controller
 
             $data["elements"] = [
                 "name" => [
+                    "type" => "text",
                     "id" => "name",
                     "name" => "name",
-                    "type" => "text",
                     "label" => "Name",
                     "placeholder" => "Name",
                     "required" => "required",
                     "value" => $data['data']->name,
                 ],
                 "email" => [
+                    "type" => "email",
                     "id" => "email",
                     "name" => "email",
-                    "type" => "email",
                     "label" => "Email",
                     "placeholder" => "Email",
                     "required" => "required",
                     "value" => $data['data']->email,
                 ],
                 "password"=> [
+                    "type" => "password",
                     "id" => "password",
                     "name" => "password",
-                    "type" => "password",
                     "label" => "Password",
                     "placeholder" => "Password",
                     "required" => "",
+                ],
+                "show_password"=> [
+                    "type" => "checkbox",
+                    "id" => "show_password",
+                    "name" => "show_password[]",
+                    "required" => "",
+                    "content" => [
+                        "show_password"=> [
+                            "id" => "show_password",
+                            "label" => "Show Password",
+                        ],
+                    ]
                 ],
             ];
 

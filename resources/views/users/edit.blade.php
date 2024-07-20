@@ -18,12 +18,7 @@
                         <div class="form-body">
                             <div class="row">
                                 @foreach ($elements as $element)
-                                    <div class="col-12 mb-2">
-                                        <div class="form-group">
-                                            <label for="{{ $element['id'] }}" class="{{ $element['required'] }}">{{ $element['label'] }}</label>
-                                            <x-form-element :$element/>
-                                        </div>
-                                    </div>
+                                    <x-form-element :$element/>
                                 @endforeach
 
                                 <div class="col-12 d-flex justify-content-end">
@@ -37,4 +32,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $('#show_password').click(function(){
+            if($(this).is(':checked')){
+                $('#password').attr('type','text');
+            }else{
+                $('#password').attr('type','password');
+            }
+        });
+    </script>
 @endsection
