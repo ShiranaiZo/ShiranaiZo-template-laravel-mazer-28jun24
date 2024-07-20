@@ -6,7 +6,7 @@
 </li>
 
 <li class="sidebar-item {{ routeIsActive('users.*') }}">
-    <a href="{{ route('users.index') }}" class='sidebar-link'>
+    <a href="{{ route('users.table') }}" class='sidebar-link'>
         <i class="bi bi-person-fill"></i>
         <span>Users</span>
     </a>

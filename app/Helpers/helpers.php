@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
+
 function routeIsActive($route): string
 {
     return request()->routeIs($route) ? 'active' : '';
@@ -12,6 +14,11 @@ function actionMessage($type, $action): string
     }
 
     return "Data successfully $action.";
+}
+
+function logError($exception, $message, $action): void
+{
+    Log::error($message, ["action" => $action, "error" => $exception->getMessage(), "stack" => $exception->getTraceAsString()]);
 }
 
 function arrayOnly(array $array, array $keys): array

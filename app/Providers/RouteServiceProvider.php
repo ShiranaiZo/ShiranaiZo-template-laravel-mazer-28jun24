@@ -36,5 +36,16 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::macro('simpleResource', function ($name, $controller) {
+            Route::controller($controller)
+                ->prefix("/$name")
+                ->name("$name.")
+                ->group(function () use($name, $controller) {
+                    Route::get("/", [$controller, 'table'])->name("table");
+                    Route::get('/form/{action}/{id?}',  [$controller, 'form'])->name('form');
+                    Route::match(['post', 'put', 'patch', 'delete'], '/action/{action}/{id?}',  [$controller, 'action'])->name('action');
+                });
+        });
     }
 }

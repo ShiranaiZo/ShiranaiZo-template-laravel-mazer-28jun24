@@ -11,8 +11,8 @@
 
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-vertical" action="{{ route($routes['update'], $data->id) }}" method="POST">
-                        @method('PATCH')
+                    <form class="form form-vertical" action="{{ $formAction['route'] }}" method="POST">
+                        @method($formAction['method'])
                         @csrf
 
                         <div class="form-body">
@@ -22,7 +22,7 @@
                                 @endforeach
 
                                 <div class="col-12 d-flex justify-content-end">
-                                    <a href="{{ route($routes['index']) }}" class="btn btn-light-secondary me-3 mb-1">Back</a>
+                                    <a href="{{ $backRoute }}" class="btn btn-light-secondary me-3 mb-1">Back</a>
                                     <button type="submit" class="btn btn-primary mb-1">Submit</button>
                                 </div>
                             </div>
