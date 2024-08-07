@@ -33,15 +33,3 @@
         </div>
     </div>
 @endsection
-
-@section('js')
-    <script>
-        $('#show_password').click(function(){
-            if($(this).is(':checked')){
-                $('#password').attr('type','text');
-            }else{
-                $('#password').attr('type','password');
-            }
-        });
-    </script>
-@endsection

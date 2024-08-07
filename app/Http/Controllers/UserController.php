@@ -102,18 +102,6 @@ class UserController extends Controller
                     "label" => "Password",
                     "placeholder" => "Password",
                 ],
-                "show_password"=> [
-                    "type" => "checkbox",
-                    "id" => "show_password",
-                    "name" => "show_password[]",
-                    "required" => "",
-                    "content" => [
-                        "show_password"=> [
-                            "id" => "show_password",
-                            "label" => "Show Password",
-                        ],
-                    ]
-                ],
             ];
 
             return view("users.form", $data);

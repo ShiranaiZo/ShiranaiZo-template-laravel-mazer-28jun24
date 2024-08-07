@@ -57,6 +57,15 @@
                     </div>
                 @endforeach
                 @break
+            @case('password')
+                <x-password
+                    :id="$element['id'] ?? ''"
+                    :name="$element['name'] ?? ''"
+                    :placeholder="$element['placeholder'] ?? '...'"
+                    :required="$element['required'] ?? ''"
+                />
+
+                @break
             @default
                 <x-input
                     :type="$element['type'] ?? 'text'"
