@@ -9,4 +9,19 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    protected $methodAction = [
+        'add' => 'POST',
+        'edit' => 'PUT',
+        'delete' => 'DELETE',
+    ];
+
+    protected array $verbAction = [
+        'add' => 'added',
+        'edit' => 'edited',
+        'delete' => 'deleted',
+    ];
+
+    protected $title = "";
+    protected $titleSingle = "";
 }

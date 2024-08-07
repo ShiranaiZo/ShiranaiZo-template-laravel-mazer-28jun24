@@ -22,7 +22,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('users', UserController::class);
+    Route::simpleResource('users', UserController::class);
 });
 
 require __DIR__.'/auth.php';
