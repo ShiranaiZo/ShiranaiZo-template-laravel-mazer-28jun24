@@ -45,13 +45,6 @@ class UserController extends Controller
         $data["title"] = $this->title;
         $data["routes"] = $this->routes;
 
-        $data["theads"] = [
-            "No",
-            "Name",
-            "Email",
-            "Action",
-        ];
-
         // ---------------- \\
 
         try {

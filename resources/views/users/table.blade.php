@@ -20,9 +20,10 @@
                     <table class="table" id="table1">
                         <thead>
                             <tr>
-                                @foreach ($theads as $keyThead => $thead)
-                                    <th>{{ $thead }}</th>
-                                @endforeach
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
 
