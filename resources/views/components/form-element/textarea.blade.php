@@ -4,4 +4,6 @@
     name="{{ $name }}"
     placeholder="{{ $placeholder }}"
     {{ $required }}
->{{ old($name, $value) }}</textarea>
+>
+    {{ old($name, $value) }}
+</textarea>

@@ -1,7 +1,7 @@
 <div class="col-12 mb-2">
     <div class="form-group">
         @if (isset($element['label']))
-            <x-label
+            <x-form-element.label
                 :for="$element['id'] ?? ''"
                 :label="$element['label'] ?? ''"
                 :required="$element['required'] ?? ''"
@@ -10,7 +10,7 @@
 
         @switch($element['type'])
             @case('textarea')
-                <x-textarea
+                <x-form-element.textarea
                     :id="$element['id'] ?? ''"
                     :name="$element['name'] ?? ''"
                     :placeholder="$element['placeholder'] ?? '...'"
@@ -20,7 +20,7 @@
                 />
                 @break
             @case('select')
-                <x-select
+                <x-form-element.select
                     :id="$element['id'] ?? ''"
                     :name="$element['name'] ?? ''"
                     :placeholder="$element['placeholder'] ?? '...'"
@@ -30,7 +30,7 @@
                 />
                 @break
             @case('file')
-                <x-input-filepond
+                <x-form-element.input-filepond
                     :id="$element['id'] ?? ''"
                     :name="$element['name'] ?? ''"
                     :required="$element['required'] ?? ''"
@@ -40,7 +40,7 @@
             @case('checkbox')
                 @foreach ($element['content'] as $content)
                     <div class="form-check">
-                        <x-input
+                        <x-form-element.input
                             :type="$element['type'] ?? 'checkbox'"
                             :id="$element['id'] ?? ''"
                             :name="$element['name'] ?? ''"
@@ -49,7 +49,7 @@
                             :value="$content['value'] ?? ''"
                         />
 
-                        <x-label
+                        <x-form-element.label
                             :for="$content['id'] ?? ''"
                             :label="$content['label'] ?? ''"
                             :required="$element['required'] ?? ''"
@@ -58,7 +58,7 @@
                 @endforeach
                 @break
             @case('password')
-                <x-password
+                <x-form-element.password
                     :id="$element['id'] ?? ''"
                     :name="$element['name'] ?? ''"
                     :placeholder="$element['placeholder'] ?? '...'"
@@ -67,7 +67,7 @@
 
                 @break
             @default
-                <x-input
+                <x-form-element.input
                     :type="$element['type'] ?? 'text'"
                     :id="$element['id'] ?? ''"
                     :name="$element['name'] ?? ''"

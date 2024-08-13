@@ -45,12 +45,10 @@ class UserController extends Controller
         $data["title"] = $this->title;
         $data["routes"] = $this->routes;
 
-        // ---------------- \\
-
         try {
             $data["columns"] = User::latest()->get();
 
-            return view("users.table", $data);
+            return view("modules.backend.".$this->routes['table'], $data);
         } catch (\Exception $e) {
             logError($e, actionMessage("failed", "retrieved"), 'table');
             abort(500);
@@ -69,8 +67,6 @@ class UserController extends Controller
             ];
 
             $data['backRoute'] = route($this->routes['table']);
-
-            // -------------------- \\
 
             if ($action == 'edit') {
                 $data["data"] = User::findOrFail($id);
@@ -100,11 +96,12 @@ class UserController extends Controller
                     "id" => "password",
                     "name" => "password",
                     "label" => "Password",
+                    "required" => isset($data['data']) ? '' : 'required',
                     "placeholder" => "Password",
                 ],
             ];
 
-            return view("users.form", $data);
+            return view("modules.backend.".$this->routes['form'], $data);
         } catch (\Exception $e) {
             logError($e, actionMessage("failed", "retrieved"), "$action/$id");
             abort(404);
@@ -116,8 +113,6 @@ class UserController extends Controller
         $verbAction = $this->verbAction[$action];
 
         $redirect = redirect()->route($this->routes['table']);
-
-        // ---------------- \\
 
         $request->validate($this->getValidationRules($action, $id));
 
