@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UnitCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::simpleResource('users', UserController::class);
+    Route::resource('unit-categories', UnitCategoryController::class);
 });
 
 require __DIR__.'/auth.php';
