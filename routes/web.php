@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\AgeCategoryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitCategoryController;
+use App\Http\Controllers\PriceCategoryController;
+use App\Http\Controllers\PromoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +28,9 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::simpleResource('users', UserController::class);
     Route::resource('unit-categories', UnitCategoryController::class);
+    Route::resource('price-categories', PriceCategoryController::class);
+    Route::resource('age-categories', AgeCategoryController::class);
+    Route::resource('promos', PromoController::class);
 });
 
 require __DIR__.'/auth.php';

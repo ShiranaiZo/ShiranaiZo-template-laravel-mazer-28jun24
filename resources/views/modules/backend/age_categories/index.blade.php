@@ -1,22 +1,9 @@
 @extends('layouts.backend.app')
-
-{{-- @section('title', $title)
-
-@include('assets.table.datatable') --}}
-
 @section('content')
     <section class="section">
         <div class="card">
-            {{-- <div class="card-header">
-                <x-button.button-add
-                    :route="route($routes['form'], 'add')"
-                />
-            </div> --}}
             <div class="card-header">
-                <a href="{{ route('unit-categories.create') }}" class="btn btn-primary mb-3">Add</a>
-                {{-- @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                @endif --}}
+                <a href="{{ route('age-categories.create') }}" class="btn btn-primary mb-3">Add</a>
             </div>
 
             <div class="card-body">
@@ -33,16 +20,16 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($unitCategories as $unitCategory)
+                            @foreach ($AgeCategories as $AgeCategory)
                                 <tr>
                                     <td style="width: 75px">{{ $loop->iteration }}</td>
-                                    <td>{{ $unitCategory->id }}</td>
-                                    <td>{{ $unitCategory->name }}</td>
-                                    <td>{{ $unitCategory->is_active ? 'Yes' : 'No' }}</td>
+                                    <td>{{ $AgeCategory->id }}</td>
+                                    <td>{{ $AgeCategory->name }}</td>
+                                    <td>{{ $AgeCategory->is_active ? 'Yes' : 'No' }}</td>
                                     <td>
-                                        <a href="{{ route('unit-categories.show', $unitCategory) }}" class="btn btn-info btn-sm">View</a>
-                                        <a href="{{ route('unit-categories.edit', $unitCategory) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('unit-categories.destroy', $unitCategory) }}" method="POST" style="display:inline;">
+                                        <a href="{{ route('age-categories.show', $AgeCategory) }}" class="btn btn-info btn-sm">View</a>
+                                        <a href="{{ route('age-categories.edit', $AgeCategory) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="{{ route('age-categories.destroy', $AgeCategory) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>

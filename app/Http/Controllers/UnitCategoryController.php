@@ -79,7 +79,7 @@ class UnitCategoryController extends Controller
     {
         $unitCategory->delete();
 
-        return redirect()->route('modules.backend.unit_categories.index')
+        return redirect()->route('unit-categories.index')
             ->with('success', 'Unit Category deleted successfully.');
     }
 }

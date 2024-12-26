@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h1>Add Unit Category</h1>
-        <form action="{{ route('unit-categories.store') }}" method="POST">
+        <h1>Add Age Category</h1>
+        <form action="{{ route('age-categories.store') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
@@ -17,7 +17,7 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-success">Save</button>
-            <a href="{{ route('unit-categories.index') }}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ route('age-categories.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 @endsection
