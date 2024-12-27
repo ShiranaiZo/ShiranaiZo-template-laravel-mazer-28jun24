@@ -53,8 +53,4 @@ Route::middleware('auth')->group(function () {
     // promo menu -----------------------------------------------------------------------------------
 });
 
-Route::middleware(['roles:admin,mahasiswa,dosen'])->group(function () {
-    Route::get('/dashboard', [AgeController::class, 'index'])->name('dashboard');
-});
-
 require __DIR__.'/auth.php';
