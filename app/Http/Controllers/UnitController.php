@@ -91,6 +91,8 @@ class UnitController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = UnitCategory::find($id);
+        $data->delete();
+        return redirect('unit')->with('success', 'Data berhasil dihapus');
     }
 }

@@ -114,6 +114,8 @@ class PriceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = PriceCategory::find($id);
+        $data->delete();
+        return redirect('price')->with('success', 'data berhasil dihapus');
     }
 }

@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::post('ages/store', [AgeController::class, 'store'])->name('age.store');
     Route::get('ages/{id}/edit', [AgeController::class, 'edit'])->name('age.edit');
     Route::put('ages/{id}/update', [AgeController::class, 'update'])->name('age.update');
+    Route::delete('ages/{id}/delete', [AgeController::class, 'destroy'])->name('age.delete');
     // delete belum dibuat
     // unit category menu-------------------------------------------------------------------------------
     Route::get('unit', [UnitController::class, 'index'])->name('unit.index');
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('unit/store', [UnitController::class, 'store'])->name('unit.store');
     Route::get('unit/{id}/edit', [UnitController::class, 'edit'])->name('unit.edit');
     Route::put('unit/{id}/update', [UnitController::class, 'update'])->name('unit.update');
+    Route::delete('unit/{id}/delete', [UnitController::class, 'destroy'])->name('unit.delete');
     // delete belum dibuat
     // price category menu ------------------------------------------------------------------------
     Route::get('price', [PriceController::class, 'index'])->name('price.index');
@@ -46,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::post('price/store', [PriceController::class, 'store'])->name('price.store');
     Route::get('price/{id}/edit', [PriceController::class, 'edit'])->name('price.edit');
     Route::put('price/{id}/update', [PriceController::class, 'update'])->name('price.update');
+    Route::delete('price/{id}/delete', [PriceController::class, 'destroy'])->name('price.delete');
     // delete belum dibuat
     // promo menu -----------------------------------------------------------------------------------
 });

@@ -37,8 +37,7 @@
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
 
-                                            {{-- <a href="#" class="btn icon icon-left btn-danger {{ $class }}" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete" onclick="modalDelete('{{ $route }}')"> --}}
-                                            <a href="#" class="btn icon icon-left btn-danger" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete" onclick="modalDelete('')">
+                                            <a href="#" class="btn icon icon-left btn-danger" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete" onclick="modalDelete('{{ route('unit.delete', $column->id) }}')">
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         </div>

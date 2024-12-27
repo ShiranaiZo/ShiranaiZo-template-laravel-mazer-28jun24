@@ -92,5 +92,7 @@ class AgeController extends Controller
     {
         $age = AgeCategory::find($id);
         $age->delete();
+
+        return redirect('ages')->with('success', 'data berhasil dihapus');
     }
 }
