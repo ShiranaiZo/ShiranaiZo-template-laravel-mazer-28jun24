@@ -32,7 +32,7 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:age_categories,name',
+            'name' => 'required|string|max:255|unique:unit_categories,name',
             'active_state' => 'required',
         ]);
 
@@ -59,7 +59,8 @@ class UnitController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = UnitCategory::find($id);
+        return view('modules.backend.unit-category.edit', ['data' => $data]);
     }
 
     /**
@@ -67,7 +68,22 @@ class UnitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+                // Validasi data
+            $validated = $request->validate([
+                'name' => 'required|string|max:255|unique:unit_categories,name,' . $id,
+                'active_state' => 'required'
+            ]);
+
+            // Cari data berdasarkan ID
+            $item = UnitCategory::find($id);
+
+            // Update data
+            $item['name'] = $request->name;
+            $item['is_active'] = $request->active_state;
+            $item->save();
+
+            // Redirect atau kembalikan respons
+            return redirect('unit')->with('success', 'Data berhasil disimpan!');
     }
 
     /**

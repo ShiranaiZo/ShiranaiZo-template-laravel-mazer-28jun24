@@ -32,12 +32,15 @@ Route::middleware('auth')->group(function () {
     Route::get('ages/{id}/edit', [AgeController::class, 'edit'])->name('age.edit');
     Route::put('ages/{id}/update', [AgeController::class, 'update'])->name('age.update');
     // delete belum dibuat
-    // unit category menu
+    // unit category menu-------------------------------------------------------------------------------
     Route::get('unit', [UnitController::class, 'index'])->name('unit.index');
     Route::get('unit/create', [UnitController::class, 'create'])->name('unit.create');
     Route::post('unit/store', [UnitController::class, 'store'])->name('unit.store');
     Route::get('unit/{id}/edit', [UnitController::class, 'edit'])->name('unit.edit');
-    // Route::get('unit', [UnitController::class, 'update'])->name('unit.update');
+    Route::put('unit/{id}/update', [UnitController::class, 'update'])->name('unit.update');
+    // delete belum dibuat
+    // price category menu
+    
 });
 
 Route::middleware(['roles:admin,mahasiswa,dosen'])->group(function () {
