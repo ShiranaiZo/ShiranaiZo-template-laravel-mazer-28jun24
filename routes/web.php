@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AgeCategoryController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\UnitCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::simpleResource('users', UserController::class);
+    Route::resource('age-categories', AgeCategoryController::class);
+    Route::resource('unit-categories', UnitCategoryController::class);
 });
 
 require __DIR__.'/auth.php';
