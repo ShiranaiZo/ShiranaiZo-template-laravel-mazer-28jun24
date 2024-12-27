@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title', 'age-category')
+@section('title', 'unit-category')
 
 @include('assets.table.datatable')
 
@@ -8,8 +8,8 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <a href="{{ route('age.create') }}" class="btn icon icon-left btn-success" data-bs-toggle-tooltip="tooltip" data-bs-placement="right" title="Add">
-                    <i class="bi bi-plus-circle"> Add Age Category</i>
+                <a href="{{ route('unit.create') }}" class="btn icon icon-left btn-success" data-bs-toggle-tooltip="tooltip" data-bs-placement="right" title="Add">
+                    <i class="bi bi-plus-circle"> Add Unit Categori</i>
                 </a>
             </div>
 
@@ -26,19 +26,19 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($ageCategories as $column)
+                            @foreach ($unitCategory as $column)
                                 <tr>
                                     <td style="width: 75px">{{ $loop->iteration }}</td>
                                     <td>{{ $column->name }}</td>
                                     <td>{{ $column->is_active == 1 ? 'Aktif' : 'Tidak Aktif' }}</td>
                                     <td style="width: 100px">
                                         <div class="d-flex justify-content-between">
-                                            <a href="{{ route('age.edit', $column->id) }}" class="btn icon icon-left btn-warning" data-bs-toggle-tooltip="tooltip" data-bs-placement="left" title="Edit">
+                                            <a href="{{ route('unit.edit', $column->id) }}" class="btn icon icon-left btn-warning" data-bs-toggle-tooltip="tooltip" data-bs-placement="left" title="Edit">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
 
-                                            <a href="#" class="btn icon icon-left btn-danger" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete"">
                                             {{-- <a href="#" class="btn icon icon-left btn-danger {{ $class }}" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete" onclick="modalDelete('{{ $route }}')"> --}}
+                                            <a href="#" class="btn icon icon-left btn-danger" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete" onclick="modalDelete('')">
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         </div>

@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\AgeCategory;
+
+use App\Models\UnitCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AgeController extends Controller
+class UnitController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data['ageCategories'] = AgeCategory::latest()->get();
+        $data['unitCategory'] = UnitCategory::latest()->get();
         $data['users'] = User::latest()->get();
-        return view('modules.backend.age-category.index', $data);
+        return view('modules.backend.unit-category.index', $data);
     }
 
     /**
@@ -22,7 +23,7 @@ class AgeController extends Controller
      */
     public function create()
     {
-        return view('modules.backend.age-category.create');
+        return view('modules.backend.unit-category.create');
     }
 
     /**
@@ -36,13 +37,13 @@ class AgeController extends Controller
         ]);
 
         // Simpan data
-        AgeCategory::create([
+        UnitCategory::create([
             'name' => $validated['name'],
             'is_active' => $validated['active_state'],
         ]);
 
         // Redirect dengan pesan sukses
-        return redirect('ages')->with('success', 'Data berhasil disimpan!');
+        return redirect('unit')->with('success', 'Data berhasil disimpan!');
     }
 
     /**
@@ -56,10 +57,9 @@ class AgeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(request $request ,$id)
+    public function edit(string $id)
     {
-        $data = AgeCategory::find($id);
-        return view('modules.backend.age-category.edit', ['data' => $data]);
+        //
     }
 
     /**
@@ -67,22 +67,7 @@ class AgeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Validasi data
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:age_categories,name,' . $id,
-            'active_state' => 'required'
-        ]);
-
-        // Cari data berdasarkan ID
-        $item = AgeCategory::find($id);
-
-        // Update data
-        $item['name'] = $request->name;
-        $item['is_active'] = $request->active_state;
-        $item->save();
-
-        // Redirect atau kembalikan respons
-        return redirect('ages')->with('success', 'Data berhasil disimpan!');
+        //
     }
 
     /**
@@ -90,7 +75,6 @@ class AgeController extends Controller
      */
     public function destroy(string $id)
     {
-        $age = AgeCategory::find($id);
-        $age->delete();
+        //
     }
 }
