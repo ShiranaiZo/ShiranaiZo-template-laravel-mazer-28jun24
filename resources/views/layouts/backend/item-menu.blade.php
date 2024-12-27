@@ -12,3 +12,10 @@
     </a>
 </li>
 
+<li class="sidebar-item {{ routeIsActive('age-categories*') }}">
+    <a href="{{ route('age-categories.index') }}" class='sidebar-link'>
+        <i class="bi bi-person-fill"></i>
+        <span>Age Categories</span>
+    </a>
+</li>
+
