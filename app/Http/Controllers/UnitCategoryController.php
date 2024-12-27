@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UnitCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UnitCategoryController extends Controller
@@ -13,6 +14,12 @@ class UnitCategoryController extends Controller
     public function index()
     {
         //
+        $data['unitCategories'] = UnitCategory::latest()->get();
+        $data['users'] = User::latest()->get();
+
+        //render view with posts
+        return view('modules.backend.unit-categories.index', $data);
+
     }
 
     /**
@@ -20,7 +27,7 @@ class UnitCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('modules.backend.unit-categories.create');
     }
 
     /**
@@ -28,7 +35,15 @@ class UnitCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'is_active' => 'required',
+            // 'created_by_id' => 'required',
+            // 'updated_by_id' => 'required'
+        ]);
+
+        UnitCategory::create($request->all());
+        return redirect('unit-categories')->with('success', 'Unit Category created successfully.');
     }
 
     /**
@@ -44,7 +59,7 @@ class UnitCategoryController extends Controller
      */
     public function edit(UnitCategory $unitCategory)
     {
-        //
+        return view('modules.backend.unit-categories.edit', compact('unitCategory'));
     }
 
     /**
@@ -52,7 +67,13 @@ class UnitCategoryController extends Controller
      */
     public function update(Request $request, UnitCategory $unitCategory)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'is_active' => 'required',
+        ]);
+
+        $unitCategory->update($request->all());
+        return redirect('unit-categories')->with('success', 'Unit Category updated successfully.');
     }
 
     /**
@@ -60,6 +81,7 @@ class UnitCategoryController extends Controller
      */
     public function destroy(UnitCategory $unitCategory)
     {
-        //
+        $unitCategory->delete();
+        return redirect('unit-categories')->with('success', 'Unit Category deleted successfully.');
     }
 }
