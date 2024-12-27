@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -39,8 +40,14 @@ Route::middleware('auth')->group(function () {
     Route::get('unit/{id}/edit', [UnitController::class, 'edit'])->name('unit.edit');
     Route::put('unit/{id}/update', [UnitController::class, 'update'])->name('unit.update');
     // delete belum dibuat
-    // price category menu
-    
+    // price category menu ------------------------------------------------------------------------
+    Route::get('price', [PriceController::class, 'index'])->name('price.index');
+    Route::get('price/create', [PriceController::class, 'create'])->name('price.create');
+    Route::post('price/store', [PriceController::class, 'store'])->name('price.store');
+    Route::get('price/{id}/edit', [PriceController::class, 'edit'])->name('price.edit');
+    Route::put('price/{id}/update', [PriceController::class, 'update'])->name('price.update');
+    // delete belum dibuat
+    // promo menu -----------------------------------------------------------------------------------
 });
 
 Route::middleware(['roles:admin,mahasiswa,dosen'])->group(function () {

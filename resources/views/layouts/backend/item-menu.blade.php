@@ -27,3 +27,10 @@
     </a>
 </li>
 
+<li class="sidebar-item {{ routeIsActive('price.*') }}">
+    <a href="{{ route('price.index') }}" class='sidebar-link'>
+        <i class="bi bi-currency-dollar"></i>
+        <span>Price Category</span>
+    </a>
+</li>
+
