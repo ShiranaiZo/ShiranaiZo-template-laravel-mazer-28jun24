@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\PromoController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('price/{id}/delete', [PriceController::class, 'destroy'])->name('price.delete');
     // delete belum dibuat
     // promo menu -----------------------------------------------------------------------------------
+    Route::get('promo', [PromoController::class, 'index'])->name('promo.index');
+    Route::get('promo/create', [PromoController::class, 'create'])->name('promo.create');
+    Route::post('promo/store', [PromoController::class, 'store'])->name('promo.store');
+    // Route::get('promo/create', [PromoController::class, 'edit'])->name('promo.edit');
+    // Route::get('promo/create', [PromoController::class, 'update'])->name('promo.update');
+    // Route::get('promo/create', [PromoController::class, 'destroy'])->name('promo.delete');
 });
 
 require __DIR__.'/auth.php';

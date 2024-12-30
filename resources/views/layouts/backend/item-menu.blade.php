@@ -34,3 +34,10 @@
     </a>
 </li>
 
+<li class="sidebar-item {{ routeIsActive('promo.*') }}">
+    <a href="{{ route('promo.index') }}" class='sidebar-link'>
+        <i class="bi bi-percent"></i>
+        <span>Promo Category</span>
+    </a>
+</li>
+
