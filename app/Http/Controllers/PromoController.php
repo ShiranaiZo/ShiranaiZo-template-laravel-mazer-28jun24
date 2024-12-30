@@ -46,11 +46,14 @@ class PromoController extends Controller
             'gender' => 'nullable|array',  // Memastikan gender adalah array
             'price_category' => 'nullable|exists:price_categories,id',  // Validasi relasi ke price_categories
             'unit_category' => 'nullable|exists:unit_categories,id',  // Validasi relasi ke unit_categories
-            'age_category' => 'nullable|array',  // Memastikan age_category adalah array
+            'age_categories' => 'nullable|array',  // Memastikan age_category adalah array
             'expired_date' => 'nullable|date',  // Validasi expired_date sebagai tanggal
             'show_price' => 'required|boolean',  // Validasi boolean untuk show_price
             'active_state' => 'required|boolean',  // Validasi boolean untuk active_state
         ]);
+
+        $genders = json_encode($validated['gender'] ?? []);
+        $ageCategories = json_encode($validated['age_categories'] ?? []);
 
         // Simpan data promo yang sudah tervalidasi
         Promo::create([
@@ -58,21 +61,18 @@ class PromoController extends Controller
             'image' => $validated['image'] ?? null,  // Menyimpan null jika image kosong
             'description' => $validated['description'] ?? null,  // Menyimpan null jika description kosong
             'price' => $validated['price'] ?? null,  // Menyimpan null jika price kosong
-            'genders' => implode(',', $validated['gender'] ?? []),  // Mengubah array gender menjadi string yang dipisahkan koma
+            'genders' => $genders,
             'price_category_id' => $validated['price_category'] ?? null,  // Menyimpan price_category jika ada
             'unit_category_id' => $validated['unit_category'] ?? null,  // Menyimpan unit_category jika ada
-            'age_category_ids' => implode(',', $validated['age_category'] ?? []),  // Mengubah array age_category menjadi string yang dipisahkan koma
+            'age_category_ids' => $ageCategories,
             'expired_at' => $validated['expired_date'] ?? null,  // Menyimpan null jika expired_date kosong
             'show_price' => $validated['show_price'],
             'active_state' => $validated['active_state'],
             'published_at' => now(),  // Set published_date ke tanggal hari ini
         ]);
-
         // Redirect dengan pesan sukses setelah berhasil menyimpan data
         return redirect('promo')->with('success', 'Data promo berhasil disimpan!');
     }
-
-
     /**
      * Display the specified resource.
      */
@@ -86,7 +86,11 @@ class PromoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['ageCategories'] = AgeCategory::where('is_active', 1)->get();
+        $data['unitCategories'] = UnitCategory::where('is_active', 1)->get();
+        $data['priceCategories'] = PriceCategory::where('is_active', 1)->get();
+        $data['promo'] = Promo::find($id);
+        return view('modules.backend.promo.edit', $data);
     }
 
     /**
@@ -102,6 +106,8 @@ class PromoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Promo::find($id);
+        $item->delete();
+        return redirect('promo')->with('success', 'Data Promo Berhasil dihapus');
     }
 }

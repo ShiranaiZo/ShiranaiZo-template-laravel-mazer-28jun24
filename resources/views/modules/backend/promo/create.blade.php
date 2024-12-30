@@ -19,7 +19,10 @@
                                     <label for="" class="form-label">Name</label>
                                     <input type="text" name="name" class="form-control" value="">
                                 </div>
-
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Image Link</label>
+                                    <input type="text" name="image" class="form-control" value="">
+                                </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea name="description" id="description" class="form-control" rows="5" placeholder="Enter the description here..."></textarea>
@@ -31,10 +34,6 @@
                                 <div class="mb-3">
                                     <label for="" class="form-label">expired_date</label>
                                     <input type="datetime-local" name="expired_date" class="form-control" value="">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label">post image</label>
-                                    <input class="form-control" type="file" id="image" name="image">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Select Gender</label>

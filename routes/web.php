@@ -55,9 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::get('promo', [PromoController::class, 'index'])->name('promo.index');
     Route::get('promo/create', [PromoController::class, 'create'])->name('promo.create');
     Route::post('promo/store', [PromoController::class, 'store'])->name('promo.store');
-    // Route::get('promo/create', [PromoController::class, 'edit'])->name('promo.edit');
-    // Route::get('promo/create', [PromoController::class, 'update'])->name('promo.update');
-    // Route::get('promo/create', [PromoController::class, 'destroy'])->name('promo.delete');
+    Route::get('promo/{id}/edit', [PromoController::class, 'edit'])->name('promo.edit');
+    Route::put('promo/{id}/update', [PromoController::class, 'update'])->name('promo.update');
+    Route::delete('promo/{id}/delete', [PromoController::class, 'destroy'])->name('promo.delete');
 });
 
 require __DIR__.'/auth.php';

@@ -16,36 +16,6 @@
         </div>
         <div class="container">
             <div class="row">
-              <div class="col-md-4 mb-4">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="..." alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card 1</h5>
-                    <p class="card-text">This is card number 1.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="..." alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card 2</h5>
-                    <p class="card-text">This is card number 2.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-4">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="..." alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card 3</h5>
-                    <p class="card-text">This is card number 3.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-              </div>
               @foreach ($promo as $item)
                 <div class="col-md-4 mb-4">
                     <div class="card" style="width: 18rem;">
@@ -53,7 +23,11 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->name }}</h5>
                         <p class="card-text">This is card number 3.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="#" class="btn btn-primary">Look Detail</a>
+                        <a href="{{ route('promo.edit', $item->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                        <a href="#" class="btn icon icon-left btn-danger" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete" onclick="modalDelete('{{ route('promo.delete', $item->id) }}')">
+                            <i class="bi bi-trash"></i>
+                        </a>
                     </div>
                     </div>
                 </div>
