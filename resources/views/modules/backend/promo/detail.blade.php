@@ -13,9 +13,9 @@
                     <div class="col-5">
                         <h4 class="card-title">{{ $promo->name }}</h4>
                         <p class="card-text">{{ $promo->description }}</p>
+                        <hr>
                         <p><b>Published At : </b>{{ $promo->published_at }}</p>
                         <p><b>Expired At : </b>{{ $promo->expired_at }}</p>
-                        <hr>
                     </div>
                     <div class="col-4">
                         <p><b>Price : </b>Rp {{ $promo->price }}</p>
@@ -31,9 +31,11 @@
                         <p><b>Unit Category : </b>{{ $unitCategory->name }}</p>
                         <p><b>Price Category : </b>{{ $priceCategory->name }}</p>
                         <p><b>Age Categories : </b>
-                            @foreach ( $ageCategories as $ageCategory )
+                            <ul>
+                                @foreach ( $ageCategories as $ageCategory )
                                 <li class="card-title">{{ $ageCategory->name }}</li>
-                            @endforeach
+                                @endforeach
+                            </ul>
                         </p>
                         <a href="{{ route('promo.index') }}" class="btn btn-light-secondary">Back</a>
                         <a href="{{ route('promo.edit', $promo->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
