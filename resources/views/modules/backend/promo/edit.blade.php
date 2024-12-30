@@ -43,7 +43,7 @@
                                             <label class="form-check-label" for="option1">Laki - Laki</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="option2" name="gender[]" value="perempuan" checked>
+                                            <input class="form-check-input" type="checkbox" id="option2" name="gender[]" value="perempuan">
                                             <label class="form-check-label" for="option2">Perempuan</label>
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                     <select class="custom-select w-100" id="selection-active" name="price_category">
                                         <option value="" selected>Silakan pilih</option>
                                         @foreach ($priceCategories as $priceCategory)
-                                            <option value="{{ $priceCategory->id }}">{{ $priceCategory->name }}</option>
+                                            <option value="{{ $priceCategory->id }}" {{ $promo->price_category_id == $priceCategory->id ? 'selected' : '' }}>{{ $priceCategory->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -62,7 +62,7 @@
                                     <select class="custom-select w-100" id="selection-active" name="unit_category">
                                         <option value="" selected>Silakan pilih</option>
                                         @foreach ($unitCategories as $unitCategory)
-                                            <option value="{{ $unitCategory->id }}">{{ $unitCategory->name }}</option>
+                                            <option value="{{ $unitCategory->id }}" {{ $promo->unit_category_id == $unitCategory->id ? 'selected' : '' }}>{{ $unitCategory->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

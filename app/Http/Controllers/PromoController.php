@@ -98,7 +98,41 @@ class PromoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validasi input dari form
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:promos,name',
+            'image' => 'nullable|string',
+            'description' => 'nullable|string',
+            'price' => 'nullable|numeric',  // Menambahkan validasi numerik untuk harga
+            'gender' => 'nullable|array',  // Memastikan gender adalah array
+            'price_category' => 'nullable|exists:price_categories,id',  // Validasi relasi ke price_categories
+            'unit_category' => 'nullable|exists:unit_categories,id',  // Validasi relasi ke unit_categories
+            'age_categories' => 'nullable|array',  // Memastikan age_category adalah array
+            'expired_date' => 'nullable|date',  // Validasi expired_date sebagai tanggal
+            'show_price' => 'required|boolean',  // Validasi boolean untuk show_price
+            'active_state' => 'required|boolean',  // Validasi boolean untuk active_state
+        ]);
+
+        $genders = json_encode($validated['gender'] ?? []);
+        $ageCategories = json_encode($validated['age_categories'] ?? []);
+
+        $item = Promo::find($id);
+        // Simpan data promo yang sudah tervalidasi
+        $item->update([
+            'name' => $validated['name'],
+            'image' => $validated['image'] ?? null,
+            'description' => $validated['description'] ?? null,
+            'price' => $validated['price'] ?? null,
+            'price_category_id' => $validated['price_category'] ?? null,
+            'unit_category_id' => $validated['unit_category'] ?? null,
+            'age_category_ids' => $validated['age_category_ids'] ?? null,
+            'expired_at' => $validated['expired_date'] ?? null,
+            'show_price' => $validated['show_price'],
+            'active_state' => $validated['active_state'],
+            'published_at' => now(),  // Tetap diperbarui ke tanggal hari ini
+        ]);
+        // Redirect dengan pesan sukses setelah berhasil menyimpan data
+        return redirect('promo')->with('success', 'Data promo berhasil disimpan!');
     }
 
     /**
