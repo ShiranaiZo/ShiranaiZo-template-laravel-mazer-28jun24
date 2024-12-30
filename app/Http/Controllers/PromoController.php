@@ -74,11 +74,17 @@ class PromoController extends Controller
         return redirect('promo')->with('success', 'Data promo berhasil disimpan!');
     }
     /**
-     * Display the specified resource.
+     * Display the specified resource. masuk ke halaman detail
      */
     public function show(string $id)
     {
-        //
+        $item['promo'] = Promo::find($id);
+        // $item['age_category'] = AgeCategory::find($item['promo']->age_category_ids);
+        $item['unitCategory'] = UnitCategory::find($item['promo']->unit_category_id);
+        $item['priceCategory'] = PriceCategory::find($item['promo']->price_category_id);
+        $ageCategoryIds = json_decode($item['promo']->age_category_ids, true);
+        $item['ageCategories'] = AgeCategory::find($ageCategoryIds);
+        return view('modules.backend.promo.detail', $item);
     }
 
     /**
@@ -99,6 +105,7 @@ class PromoController extends Controller
     public function update(Request $request, string $id)
     {
         // Validasi input dari form
+        // dd($request);
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:promos,name',
             'image' => 'nullable|string',
@@ -125,10 +132,11 @@ class PromoController extends Controller
             'price' => $validated['price'] ?? null,
             'price_category_id' => $validated['price_category'] ?? null,
             'unit_category_id' => $validated['unit_category'] ?? null,
-            'age_category_ids' => $validated['age_category_ids'] ?? null,
+            'age_category_ids' => $ageCategories ?? null,
             'expired_at' => $validated['expired_date'] ?? null,
             'show_price' => $validated['show_price'],
             'active_state' => $validated['active_state'],
+            'genders' => $genders ?? null,
             'published_at' => now(),  // Tetap diperbarui ke tanggal hari ini
         ]);
         // Redirect dengan pesan sukses setelah berhasil menyimpan data

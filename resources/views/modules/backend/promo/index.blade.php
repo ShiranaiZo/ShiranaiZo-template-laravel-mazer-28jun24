@@ -19,11 +19,15 @@
               @foreach ($promo as $item)
                 <div class="col-md-4 mb-4">
                     <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ URL('storage/chibidoctor1.jpg') }}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ $item->image }}" alt="Card image cap" width="100px" height="200px">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->name }}</h5>
-                        <p class="card-text">This is card number 3.</p>
-                        <a href="#" class="btn btn-primary">Look Detail</a>
+                        <hr>
+                        <div class="col">Harga : Rp {{ $item->price }}</div>
+                        <div class="col">Status Aktif : {{ $item->is_active == 1 ? 'Aktif' : 'Tidak Aktif'}}</div>
+                        <div class="col">Expired : {{ $item->expired_at }}</div>
+                        <hr>
+                        <a href="{{ route('promo.detail', $item->id) }}" class="btn btn-primary">Look Detail</a>
                         <a href="{{ route('promo.edit', $item->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                         <a href="#" class="btn icon icon-left btn-danger" data-bs-toggle-tooltip="tooltip" data-bs-placement="top" title="Delete" data-bs-toggle="modal" data-bs-target="#modal_delete" onclick="modalDelete('{{ route('promo.delete', $item->id) }}')">
                             <i class="bi bi-trash"></i>

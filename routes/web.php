@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::get('promo/{id}/edit', [PromoController::class, 'edit'])->name('promo.edit');
     Route::put('promo/{id}/update', [PromoController::class, 'update'])->name('promo.update');
     Route::delete('promo/{id}/delete', [PromoController::class, 'destroy'])->name('promo.delete');
+    Route::get('promo/{id}/detail', [PromoController::class, 'show'])->name('promo.detail');
 });
 
 require __DIR__.'/auth.php';
