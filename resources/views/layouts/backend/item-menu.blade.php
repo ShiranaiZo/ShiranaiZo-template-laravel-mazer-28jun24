@@ -19,3 +19,10 @@
     </a>
 </li>
 
+<li class="sidebar-item {{ routeIsActive('unit-categories*') }}">
+    <a href="{{ route('unit-categories.index') }}" class='sidebar-link'>
+        <i class="bi bi-person-fill"></i>
+        <span>Unit Categories</span>
+    </a>
+</li>
+
