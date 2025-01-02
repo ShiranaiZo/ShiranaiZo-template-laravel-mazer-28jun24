@@ -144,7 +144,7 @@ class UserController extends Controller
                 default:
                     throw new \Exception("Action ".$action." not found.");
 
-                    break;
+                    // break;
             }
 
             DB::commit();
