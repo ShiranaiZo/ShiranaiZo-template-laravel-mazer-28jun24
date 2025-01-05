@@ -13,7 +13,7 @@
 </li>
 <li class="sidebar-item {{ routeIsActive('unit-categories.*') }}">
     <a href="{{ route('unit-categories.index') }}" class='sidebar-link'>
-        <i class="bi bi-person-fill"></i>
+        <i class="bi bi-person"></i>
         <span>Unit</span>
     </a>
 </li>

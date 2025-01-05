@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UnitCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UnitCategoryController extends Controller
@@ -12,8 +13,9 @@ class UnitCategoryController extends Controller
      */
     public function index()
     {
-        $unitCategories = UnitCategory::all();
-        return view('modules.backend.unit_categories.index', compact('unitCategories'));
+        $data['unitCategories'] = UnitCategory::latest()->get();
+        $data['users'] = User::latest()->get();
+        return view('modules.backend.unit-categories.index', $data);
     }
 
     /**
@@ -21,7 +23,7 @@ class UnitCategoryController extends Controller
      */
     public function create()
     {
-        return view('modules.backend.unit_categories.create');
+        return view('modules.backend.unit-categories.create');
     }
 
     /**
@@ -41,32 +43,25 @@ class UnitCategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(UnitCategory $unitCategory)
-    {
-        return view('modules.backend.unit_categories.show', compact('unitCategory'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(UnitCategory $unitCategory)
+    public function edit(string $id)
     {
-        return view('modules.backend.unit_categories.edit', compact('unitCategory'));
+        $data = UnitCategory::find($id);
+        return view('modules.backend.unit-categories.edit', ['data'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UnitCategory $unitCategory)
+    public function update(Request $request, string $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'is_active' => 'required|boolean',
         ]);
-
-        $unitCategory->update($request->all());
+        $data = UnitCategory::find($id);
+        $data->update($request->all());
 
         return redirect()->route('unit-categories.index')
             ->with('success', 'Unit Category updated successfully.');
@@ -75,11 +70,12 @@ class UnitCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UnitCategory $unitCategory)
+    public function destroy(string $id)
     {
-        $unitCategory->delete();
+        $data = UnitCategory::find($id);
+        $data->delete();
 
-        return redirect()->route('modules.backend.unit_categories.index')
+        return redirect()->route('unit-categories.index')
             ->with('success', 'Unit Category deleted successfully.');
     }
 }
